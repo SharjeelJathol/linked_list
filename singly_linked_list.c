@@ -112,32 +112,41 @@ void list_pop_front(LinkedList* list){
 
     // update the length
     list->length--;
-    printf("working\n");
 
     return;
 }
 
 // remove the last element
 void list_pop_back(LinkedList* list){
+    // check whether the list even exists
     if(!list) return;
 
+    // check whether list list is initialized
     if(!list->head) return;
 
+    // reference the head for parsing
     Node* current = list->head;
     Node* prev = NULL;
 
-    while(!current->next){
+    // parse until the last element in the list
+    while(current->next){
         prev = current;
         current = current->next;
     }
 
-    if(!prev)   list->head = list->head->next;
+    if(prev == NULL){
+        // there was only one element in the list
+        list->head = NULL;
+        list->tail = NULL;
+    }    
     else{
+        list->tail = prev;
         prev->next = NULL;
     }
 
     prev = NULL;
     current = NULL;
+    list->length--;
 
     return;
 }
