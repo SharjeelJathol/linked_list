@@ -100,7 +100,19 @@ void list_pop_front(LinkedList* list){
 
     // TODO: free memory?
 
-    list->head = list->head->next;
+    // if only one element, needs to update both head and tail
+    if(list->length == 1){
+        list->head = NULL;
+        list->tail = NULL;
+    }
+    else{
+        // otherwise just move the head one step forward
+        list->head = list->head->next;
+    }
+
+    // update the length
+    list->length--;
+    printf("working\n");
 
     return;
 }
