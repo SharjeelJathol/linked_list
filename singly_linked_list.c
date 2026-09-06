@@ -155,10 +155,13 @@ void list_pop_back(LinkedList* list){
 
 // get nth element in the linked list
 void* list_get(const LinkedList* list, size_t index){
+    // check whether the list even exists
     if(!list) return NULL;
 
+    // reference the list head for parsing
     Node* temp = list->head;
 
+    // check whether list list is initialized
     if(!temp) return NULL;
 
     for(size_t i = 0; i < index; i++){
