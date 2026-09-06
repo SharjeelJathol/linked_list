@@ -157,13 +157,17 @@ void list_pop_back(LinkedList* list){
 void* list_get(const LinkedList* list, size_t index){
     // check whether the list even exists
     if(!list) return NULL;
-
+    
     // reference the list head for parsing
     Node* temp = list->head;
-
+    
     // check whether list list is initialized
     if(!temp) return NULL;
 
+    // check if the index is within the length range
+    if(index >= list->length) return NULL;
+
+    // parse to the target index
     for(size_t i = 0; i < index; i++){
         if(temp->next == NULL) return NULL;
         temp = temp->next;
@@ -174,17 +178,25 @@ void* list_get(const LinkedList* list, size_t index){
 
 // set the nth element in the linked list
 void list_set(LinkedList* list, size_t index, const void* data){
+    // check whether the list even exists
     if(!list) return;
 
+    // refrence to the head of the list
     Node* temp = list->head;
 
+    // check whether list list is initialized
     if(!temp) return;
 
+    // check if the index is within the length range
+    if(index >= list->length - 1) return;
+
+    // parse to the target index
     for(size_t i = 0; i < index; i++){
         if(temp->next == NULL) return;
         temp = temp->next;
     }
 
+    // copying data to the memory
     memcpy(temp->data, data, list->data_size);
 
     return;
