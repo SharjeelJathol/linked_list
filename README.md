@@ -1,0 +1,1 @@
+Making something like templates in c++
