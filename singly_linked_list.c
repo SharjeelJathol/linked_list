@@ -59,21 +59,22 @@ void list_push_front(LinkedList* list, const void* data){
 
 // add the element to the end of the list
 void list_push_back(LinkedList* list, const void* data){
+    // check whether the lists even exists
+    if(!list) return;
+
+    // creating new Node
     Node* new_node = (Node*)malloc(sizeof(Node));
 
     if (!new_node) return;  // Allocation failed
 
     // add new data
-    new_node->data = malloc(list->data_size);
-    if (!new_node->data) {
-        free(new_node);
+    new_node->data = malloc(list->data_size);   // allocate memory for data   
+        if (!new_node->data) {
         return;  // Allocation failed
     }
-    memcpy(new_node->data, data, list->data_size);
+    memcpy(new_node->data, data, list->data_size);  // copy data to memory
     new_node->next = NULL;
-    
-    if(!list) return;
-    
+
     if(!list->head){
         list->head = new_node;
         list->tail = new_node;
