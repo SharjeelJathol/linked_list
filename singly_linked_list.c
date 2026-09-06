@@ -92,9 +92,13 @@ void list_push_back(LinkedList* list, const void* data){
 
 // remove the first element
 void list_pop_front(LinkedList* list){
+    // check whether the list even exists
     if(!list) return;
 
+    // check whether list list is initialized
     if(!list->head) return;
+
+    // TODO: free memory?
 
     list->head = list->head->next;
 
