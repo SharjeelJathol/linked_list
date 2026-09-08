@@ -205,6 +205,9 @@ void list_set(LinkedList* list, size_t index, const void* data){
 // Utility
 // return the linked list length
 size_t list_size(const LinkedList* list){
+    // check if the list is even initialized
+    if(!list) return 0;
+    
     return list->length;
 }
 
