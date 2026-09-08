@@ -210,8 +210,10 @@ size_t list_size(const LinkedList* list){
 
 // check if the list is empty
 int list_empty(const LinkedList* list){
+    // check if the list is even initialized
     if(!list) return 1;
 
+    // check if the list has no node
     if(list->length == 0) return 1;
 
     return 0;
