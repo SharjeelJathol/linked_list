@@ -242,24 +242,25 @@ void list_clear(LinkedList* list){
 
 // Bonus: Insert / Delete at Index
 
-// insert the new element in between the list
+// insert the new element in between the list at provided index
+// It also inserts at the end or the first element if the list is empty
 void list_insert(LinkedList* list, size_t index, const void* data){
+    // check whether the list even exists or not
     if(!list) return;
 
+    // check if the index is out of bound
+    if(index > list_size(list)) return;
+        
     // pointer to header
     Node* current = list->head;
     Node* prev = NULL;
-
-    if(!current) return;
-
+    
     // get the pointer of the certain indexed element in the linked list
     for(size_t i = 0; i < index; i++){
-        if(index == 0) break;
-        if(current->next == NULL) return;
         prev = current;
         current = current->next;   
     }
-
+    
     // create new node
     Node* new_node = (Node*)malloc(sizeof(Node));
 
