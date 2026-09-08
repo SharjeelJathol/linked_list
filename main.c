@@ -61,7 +61,6 @@ int test_push_pop_front() {
         list_push_front(list, &values[i]);
     }
     print_int_list(list, "After push front 50,40,30,20,10");
-    printf("Verified");
     assert(list_size(list) == 5);
     
     // Verify order (should be reverse: 50,40,30,20,10)
@@ -606,16 +605,16 @@ int main() {
     
     passed += test_creation_destruction();
     passed += test_push_pop_front();
-    // passed += test_push_pop_back();
-    // passed += test_mixed_operations();
-    // passed += test_insert();
-    // passed += test_delete();
-    // passed += test_get_set();
-    // passed += test_clear();
-    // passed += test_strings();
-    // passed += test_stress();
-    // passed += test_edge_cases();
-    // passed += test_structs();
+    passed += test_push_pop_back();
+    passed += test_mixed_operations();
+    passed += test_insert();
+    passed += test_delete();
+    passed += test_get_set();
+    passed += test_clear();
+    passed += test_strings();
+    passed += test_stress();
+    passed += test_edge_cases();
+    passed += test_structs();
     
     printf("\n===================================================\n");
     printf("             TEST RESULTS\n");
