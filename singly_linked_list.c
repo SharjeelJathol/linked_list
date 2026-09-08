@@ -221,12 +221,18 @@ int list_empty(const LinkedList* list){
 
 // clear the list
 void list_clear(LinkedList* list){
+    // check whether the list even exists or not
     if(!list) return;
-
+    
+    // check if the list has any data node
     if(!list->head) return;
 
+    // TODO: free the memory
+
+    // revert back to the state when a list is initialized
     list->head = NULL;
     list->tail = NULL;
+    list->length = 0;
 
     return;
 }
