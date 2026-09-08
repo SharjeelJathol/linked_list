@@ -354,4 +354,22 @@ void list_print_int(const LinkedList* list){
     return;
 
 }
-// void list_print_string(const LinkedList* list);   // Print as strings
+
+void list_print_string(const LinkedList* list){
+    // check if the list even exists
+    if(!list) return;
+
+    // check if the list is empty
+    if(!list_size(list)) return;
+
+    Node* current = list->head;
+
+    for(size_t i = 0; i < list_size(list); i++){
+        printf("%s ", *(char*)current->data);
+        current = current->next;
+    }
+
+    printf("\n");
+
+    return;
+}
