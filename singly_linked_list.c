@@ -316,10 +316,12 @@ void list_delete(LinkedList* list, size_t index){
     if(!prev){
         // delete the only node in the list
         list->head = list->head->next;
+        list->tail = NULL;
     }
     else if(!current){
         // delete the last element
         prev->next = NULL;
+        list->tail = prev;
     }
     else{
         // delete the node inbetween
