@@ -335,5 +335,23 @@ void list_delete(LinkedList* list, size_t index){
 
 // // Bonus: Print (for debugging)
 
-// void list_print_int(const LinkedList* list);      // Print as integers
+void list_print_int(const LinkedList* list){
+    // check if the list even exists
+    if(!list) return;
+
+    // check if the list is empty
+    if(!list_size(list)) return;
+
+    Node* current = list->head;
+
+    for(size_t i = 0; i < list_size(list); i++){
+        printf("%d ", *(int*)current->data);
+        current = current->next;
+    }
+
+    printf("\n");
+
+    return;
+
+}
 // void list_print_string(const LinkedList* list);   // Print as strings
