@@ -181,14 +181,15 @@ void list_set(LinkedList* list, size_t index, const void* data){
     // check whether the list even exists
     if(!list) return;
 
+    // check the index is within the bound
+    if(!list_size(list)) return;
+
     // refrence to the head of the list
     Node* temp = list->head;
-
-    // check whether list list is initialized
-    if(!temp) return;
+    Node* prev = NULL;
 
     // check if the index is within the length range
-    if(index >= list->length - 1) return;
+    if(index >= list->length) return;
 
     // parse to the target index
     for(size_t i = 0; i < index; i++){
