@@ -292,29 +292,39 @@ void list_insert(LinkedList* list, size_t index, const void* data){
     return;
 }
 
+// delete an element at the provided index
 void list_delete(LinkedList* list, size_t index){
+    // check whether the list even exists or not
     if(!list) return;
+
+    // check if the index is out of bound
+    if(index > list_size(list)) return;
 
     // pointer to header
     Node* current = list->head;
     Node* prev = NULL;
-
+    
+    // if there is no element in the list
     if(!current) return;
 
     // get the pointer of the certain indexed element in the linked list
     for(size_t i = 0; i < index; i++){
-        if(index == 0) break;
-        if(current->next == NULL) return;
         prev = current;
         current = current->next;   
     }
 
-    // delete the node inbetween
     if(!prev){
+        // delete the only node in the list
         list->head = list->head->next;
     }
-    else
+    else if(!current){
+        // delete the last element
+        prev->next = NULL;
+    }
+    else{
+        // delete the node inbetween
         prev->next = current->next;
+    }
 
     current = NULL;
     prev = NULL;
